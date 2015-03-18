@@ -10,7 +10,8 @@
   "keywords": [
     "Gotham-router",
     "router",
-    "gothamrouter"
+    "gothamrouter",
+    "gotham-router"
   ],
   "license": "MIT",
   "private": true,
