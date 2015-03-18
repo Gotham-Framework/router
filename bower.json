@@ -8,9 +8,6 @@
   "description": "Simple front-end router",
   "main": "dist/router.js",
   "keywords": [
-    "Gotham-router",
-    "router",
-    "gothamrouter",
     "gotham-router"
   ],
   "license": "MIT",
