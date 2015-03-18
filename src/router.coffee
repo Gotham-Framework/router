@@ -10,34 +10,32 @@
 ##
 class @Router
   
-  # Pull every routes to match
-  _routes: []
-
-  # Current request (Ex. zombie/27/edit)
-  _request: ''
-
-  # Check if the router matched
-  _success: false
-
-  ##
-  # Pull the response of the matched route
-  # @example
-  #   _response:
-  #    result: 'zombie/edit'
-  #    params:
-  #      id: 27
-  ##
-  _response: {}
-
   ##
   # Constructor
   #
-  # Set the current request
+  # Set basic variables
   #
   ##
-  constructor: ->
+  constructor: (request) ->
 
-    @_request = @_slashes(window.location.pathname)
+    # Current request (Ex. zombie/27/edit)
+    @_request = @_slashes(request)
+
+    # Pull every routes to match
+    @_routes = []
+
+    # Check if the router matched
+    @_success = false
+
+    ##
+    # Pull the response of the matched route
+    # @example
+    #   _response:
+    #    result: 'zombie/edit'
+    #    params:
+    #      id: 27
+    ##
+    @_response = {}
 
   ##
   # Match
@@ -54,8 +52,8 @@ class @Router
     @_routes.push
       pattern: pattern
       result: result
-      parsed: @_parse_pattern(pattern)
-      variables: @_fetch_variables(pattern)
+      parsed: @_parsePattern(pattern)
+      variables: @_fetchVariables(pattern)
       constraint: constraint
 
   ##
@@ -84,12 +82,12 @@ class @Router
         if route.variables?
 
           # Fetch every params of the request
-          params_request = route.parsed.exec(@_request)
+          paramsRequest = route.parsed.exec(@_request)
 
           for variable, index in route.variables
 
             # Create param with the value from current request
-            params[variable] = params_request[index + 1]
+            params[variable] = paramsRequest[index + 1]
 
         # Success match, now we will check if the route pass the constraint function
         if route.constraint?
@@ -97,10 +95,10 @@ class @Router
           # Check if it's a function 
           if typeof route.constraint is 'function'
 
-            success_constraint = route.constraint(params)
+            successConstraint = route.constraint(params)
 
             # With this condition we prevent an "undefined" return
-            if success_constraint is false
+            if successConstraint is false
 
               success = false
 
@@ -153,23 +151,6 @@ class @Router
     return @_response
 
   ##
-  # Decode
-  #
-  # Just will decode the sugared string controller of match()
-  # to be ready to require()
-  #
-  # @param  [String] The string to decode
-  #
-  # @example
-  #   _decode('zombies#edit') -> zombies/edit
-  # 
-  # @return [String] The string decoded
-  ##
-  _decode: (controller) ->
-
-    return controller.split('#').join('/')
-
-  ##
   # Slashes
   #
   # Eat the first and last slash of a string
@@ -190,7 +171,6 @@ class @Router
       while str.charAt(0) is '/'
         str = str.substr(1)
 
-
     return str
 
   ##
@@ -200,7 +180,7 @@ class @Router
   # 
   # @return [Regex] Pattern regexified
   ##
-  _parse_pattern: (pattern) ->
+  _parsePattern: (pattern) ->
 
     # Regex to find every variables of the pattern (Ex. /zombies/:id/edit})
     variables = /(:[a-zA-Z_]*)/g
@@ -229,7 +209,7 @@ class @Router
   # @params   [String] The pattern
   # @return   [Object] Variables found
   ##
-  _fetch_variables: (pattern) ->
+  _fetchVariables: (pattern) ->
 
     # Regex to find every variables of the pattern (Ex. /users/:id)
     variables = /(:[a-zA-Z_]*)/g
