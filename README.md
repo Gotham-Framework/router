@@ -192,3 +192,4 @@ coffee --compile --watch --output dist/ src/
 ```
 
 ## Tests 
+Test are written with Qunit, just launch with your browser the file ```tests/index.html```
