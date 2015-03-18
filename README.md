@@ -146,7 +146,7 @@ router.match('/zombie/:name', 'zombie#index', function(params) {
 });
 ```
 
-```run()```
+###```run()```
 
 Loop all routes added via ```match()``` and try to find if a route ... match.
 
@@ -164,15 +164,15 @@ if (router.passes()) {
 }
 ```
 
-```passes()```
+###```passes()```
 
 If the router matched a route, it returns true else false
 
-```fails()```
+###```fails()```
 
 If the router matched a route, it returns false else true
 
-```response()```
+###```response()```
 
 Return an empty object if failed else return an object like : 
 
@@ -192,3 +192,4 @@ coffee --compile --watch --output dist/ src/
 ```
 
 ## Tests 
+Test are written with Qunit, just launch with your browser the file ```tests/index.html```
