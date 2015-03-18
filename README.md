@@ -17,7 +17,7 @@ bower install --save gotham-router
 ## Examples
 
 ### Simple example
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +49,7 @@ bower install --save gotham-router
 ```
 
 ### Example in the real world
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +90,7 @@ bower install --save gotham-router
 
 Of course you can add variables into your routes to be more flexible.
 
-```
+```javascript
 router.match("/zombie/show/:id", function(params) {
     console.log("Edit zombie #" + params.id);
 });
@@ -102,6 +102,7 @@ router.match("/zombie/show/:id", function(params) {
 
 Sometimes you need to attach a constraint to a route. You can do that easily :
 
+```javascript
 router.match("/search/zombie/:town", function() { ... }, function (params) {
   
   if (params.town === 'new-york') {
@@ -111,6 +112,7 @@ router.match("/search/zombie/:town", function() { ... }, function (params) {
   return false;
 
 });
+```
 
 > In this case, the route will match only if the town passed is ```new-york```, it's a little bit useless here, but we can imagine everything. The only thing to keep in mind the constraint function must return ```true``` or ```false```.
 
