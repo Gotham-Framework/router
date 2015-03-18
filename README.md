@@ -1,3 +1,5 @@
+**In progress, don't use !**
+
 ## How to compile source files 
 
 In the root of the project, execute that : 
