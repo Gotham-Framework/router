@@ -116,7 +116,72 @@ router.match("/search/zombie/:town", function() { ... }, function (params) {
 
 > In this case, the route will match only if the town passed is ```new-york```, it's a little bit useless here, but we can imagine everything. The only thing to keep in mind the constraint function must return ```true``` or ```false```.
 
+## Api
 
+####```match(pattern, result, constraint)```
+
+```javascript
+router.match('/zombie/focus/:id', function(params) {
+    console.log(params.id);
+});
+```
+
+```javascript
+router.match('/zombie/focus/:id', 'you can put a string here than a function');
+```
+
+```javascript
+// You can set an object too ...
+router.match('/zombie/focus/:id', {});
+```
+
+```javascript
+router.match('/zombie/:name', 'zombie#index', function(params) {
+  if (params.name === 'justin bieber') {
+    // Noop
+    return false;
+  }
+
+  return true;
+});
+```
+
+```run()```
+
+Loop all routes added via ```match()``` and try to find if a route ... match.
+
+```javascript
+// Your routes here ...
+
+// Run !
+router.run();
+
+// Now we can check if it's a success
+if (router.passes()) {
+  
+  // ...
+
+}
+```
+
+```passes()```
+
+If the router matched a route, it returns true else false
+
+```fails()```
+
+If the router matched a route, it returns false else true
+
+```response()```
+
+Return an empty object if failed else return an object like : 
+
+```javascript
+{
+  params: {id: 25},
+  result: function() {}
+}
+```
 
 ## How to compile source files 
 

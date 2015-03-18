@@ -42,6 +42,7 @@ class @Router
   #
   # @param [String] The pattern to match against the current request
   # @param [Mixed] The result which will give to the response object
+  # @param [Function] The constraint to run against the route
   # 
   # @example Router.match('zombie/:id/edit', 'zombie#edit')
   ##
