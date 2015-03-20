@@ -96,7 +96,7 @@ router.match("/zombie/show/:id", function(params) {
 });
 ```
 
-> In this example, an url like ```http://localhost:3000/zombie/show/22``` or ```http://localhost:3000/zombie/show/smith``` will execute the file controllers/zombie/edit.coffee
+> In this example, an url like ```http://localhost:3000/zombie/show/22``` or ```http://localhost:3000/zombie/show/smith``` will match the pattern given
 
 ## Constraints 
 
