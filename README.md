@@ -1,6 +1,6 @@
 ## Router 
 
-The Router component is a simple javascript class who provide an elegant routing system based on strings.
+The Router component is a simple javascript class that provides an elegant routing system based on strings.
 
 ```javascript
 router.match('/zombie/edit/:id', function(params) {
