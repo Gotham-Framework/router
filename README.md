@@ -137,7 +137,7 @@ router.match('/zombie/focus/:id', {});
 
 ```javascript
 router.match('/zombie/:name', 'zombie#index', function(params) {
-  if (params.name === 'justin bieber') {
+  if (params.name === 'bieber') {
     // Noop
     return false;
   }
