@@ -1,6 +1,6 @@
 ## Router 
 
-The Router component is a simple javascript class who provide an elegant routing system based on strings.
+The Router component is a simple javascript class that provides an elegant routing system based on strings.
 
 ```javascript
 router.match('/zombie/edit/:id', function(params) {
@@ -96,7 +96,7 @@ router.match("/zombie/show/:id", function(params) {
 });
 ```
 
-> In this example, an url like ```http://localhost:3000/zombie/show/22``` or ```http://localhost:3000/zombie/show/smith``` will execute the file controllers/zombie/edit.coffee
+> In this example, an url like ```http://localhost:3000/zombie/show/22``` or ```http://localhost:3000/zombie/show/smith``` will match the pattern given
 
 ## Constraints 
 
@@ -137,7 +137,7 @@ router.match('/zombie/focus/:id', {});
 
 ```javascript
 router.match('/zombie/:name', 'zombie#index', function(params) {
-  if (params.name === 'justin bieber') {
+  if (params.name === 'bieber') {
     // Noop
     return false;
   }
