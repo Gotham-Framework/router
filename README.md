@@ -1,3 +1,5 @@
+![Logo](http://gesjeremie.fr/github_resources/router-component.png)
+
 ## Router 
 
 The Router component is a simple javascript class that provides an elegant routing system based on strings.
